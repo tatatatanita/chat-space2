@@ -1,0 +1,25 @@
+.flash-box {
+  color: white;
+  font-size: 1rem;
+  font-weight: lighter;
+  text-align: center;
+  width: 100vw;
+  .side {
+    width: 300px;
+    color: white;
+    float: left;
+    .side-header {
+      background-color: #253141;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+      .side-header__box {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        font-weight: bold;
+      }
+    }
+  }
+}
