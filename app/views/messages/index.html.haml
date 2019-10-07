@@ -1,34 +1,61 @@
-
+.header
+  グループを作成しました
 .flash-box
   .side
     .side-header
       .side-header_box
         .side-header_box_user-name
+          %p シバタ
         .side-header_box_menu
           .side-header_box_menu_new-group
             =link_to "", class: "" do
-              .fa-edit
+              %i.fa.fa-pencil-square-o
           .side-header_box_menu_edit-user
             =link_to "", class: "" do
-              .fa-cog
+              %i.fa.fa-cog
     .groups
       =link_to "", class: "" do
-      .group
-        .group_group-name
-        .group_latest-message
+        .groups_group
+          .groups_group_name
+            %p チームN
+          .groups_group_latest-message
+            %p シバタ
   .chat-main
     .main-header
       .main-header_left-box
-      .main-header_left-box_current-group
-      .main-header_left-box_member-list
-      .main-header_edit_btn
+        .main-header_left-box_current-group
+          %p チームN
+        .main-header_left-box_member-list
+          Member:
+          .main-header_left-box_member-list_member
+            シバタ
+      .main-header_edit-btn
+        %a.edit-btn Edit
     .messages
       .message
         .message_upper-info
+          .message_upper-info_user-name
+            Aさん
+          .message_upper-info_date
+            2019/10/18(Fri) 15:10:14
         .message_text
+          .message_text_content
+            こんにちわ
+        .message_upper-info2
+          .message_upper-info_user-name2
+            シバタ
+          .message_upper-info_date2
+            2019/10/18(Fri) 15:15:14
+        .message_text2
+          .message_text_content2
+            よろしくお願いします。
+        
     .form
-      .type_message
-      .send_btn
-
-
-
+      .form-message
+        .form-message_text
+          %textarea{ placeholder: 'type a message' }
+        .type_m_box
+          .type_m_box_image
+            %i.fa.fa-picture-o
+        .form-send
+          %a.send-btn Send
