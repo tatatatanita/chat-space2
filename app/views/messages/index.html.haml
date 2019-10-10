@@ -8,10 +8,10 @@
           %p シバタ
         .side-header_box_menu
           .side-header_box_menu_new-group
-            =link_to "", class: "" do
+            =link_to new_group_path, class: "" do
               %i.fa.fa-pencil-square-o
           .side-header_box_menu_edit-user
-            =link_to "", class: "" do
+            =link_to edit_user_path(current_user), class: "" do
               %i.fa.fa-cog
     .groups
       =link_to "", class: "" do
@@ -31,31 +31,13 @@
             シバタ
       .main-header_edit-btn
         %a.edit-btn Edit
-    .messages
-      .message
-        .message_upper-info
-          .message_upper-info_user-name
-            Aさん
-          .message_upper-info_date
-            2019/10/18(Fri) 15:10:14
-        .message_text
-          .message_text_content
-            こんにちわ
-        .message_upper-info2
-          .message_upper-info_user-name2
-            シバタ
-          .message_upper-info_date2
-            2019/10/18(Fri) 15:15:14
-        .message_text2
-          .message_text_content2
-            よろしくお願いします。
-        
+   .messages
+      = render @messages
     .form
-      .form-message
-        .form-message_text
-          %textarea{ placeholder: 'type a message' }
-        .type_m_box
-          .type_m_box_image
-            %i.fa.fa-picture-o
-        .form-send
-          %a.send-btn Send
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
