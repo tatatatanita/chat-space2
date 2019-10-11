@@ -1,43 +1,24 @@
-.header
-  グループを作成しました
 .flash-box
-  .side
-    .side-header
-      .side-header_box
-        .side-header_box_user-name
-          %p シバタ
-        .side-header_box_menu
-          .side-header_box_menu_new-group
-            =link_to new_group_path, class: "" do
-              %i.fa.fa-pencil-square-o
-          .side-header_box_menu_edit-user
-            =link_to edit_user_path(current_user), class: "" do
-              %i.fa.fa-cog
-    .groups
-      =link_to "", class: "" do
-        .groups_group
-          .groups_group_name
-            %p チームN
-          .groups_group_latest-message
-            %p シバタ
-  .chat-main
-    .main-header
-      .main-header_left-box
-        .main-header_left-box_current-group
-          %p チームN
-        .main-header_left-box_member-list
-          Member:
-          .main-header_left-box_member-list_member
-            シバタ
-      .main-header_edit-btn
-        %a.edit-btn Edit
-   .messages
-      = render @messages
-    .form
-      = form_for [@group, @message] do |f|
-        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
-        .form__mask
-          = f.label :image, class: 'form__mask__image' do
-            = fa_icon 'picture-o', class: 'icon'
-            = f.file_field :image, class: 'hidden'
-        = f.submit 'Send', class: 'form__submit'
+  .wrapper
+    = render 'devise/shared/side_bar'
+    .chat-main
+      .main-header
+        .main-header__left-box
+          %h2.main-header__left-box__current-group{ data: {group: {id: params[:group_id]}} } 
+            = @group.name
+          %ul.main-header__left-box__member-list
+            Member： 
+            - @members.each do |member|
+              = member.name
+        = link_to edit_group_path(params[:group_id]) do 
+          .main-header__edit-btn Edit
+      .messages
+        = render @messages
+      .form
+        = form_for [@group, @message] do |f|
+          = f.text_field :content, class: 'form__message', placeholder: '  type a message'
+          .form__mask
+            = f.label :image, class: 'form__mask__image' do
+              = fa_icon 'picture-o', class: 'icon'
+              = f.file_field :image, class: 'hidden'
+          = f.submit 'Send', class: 'form__submit'
