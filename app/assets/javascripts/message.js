@@ -51,7 +51,7 @@ $(function() {
         scrollBottom();
       })
       .fail(function() {
-        alert('エラーのためメッセージが送信できませんでした');
+        alert('メッセージを入力してください');
         $('.form__submit').prop('disabled', false);
     })
   });
